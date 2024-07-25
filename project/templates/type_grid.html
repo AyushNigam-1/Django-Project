@@ -1,6 +1,7 @@
 <div class="flex-col flex gap-8">
     <h3 class="text-4xl font-bold mx-auto">Find your niche</h3>
     <div class="flex gap-6">
+        {% for category in categories %}
         <a href="#" class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 bg-white">
             <span
                 class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
@@ -8,76 +9,40 @@
             <div class="sm:flex sm:justify-between sm:gap-4">
                 <div>
                     <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
-                        Building a SaaS product as a software developer
+                        {{category.name}}
                     </h3>
 
                     <p class="mt-1 text-xs font-medium text-gray-600">By John Doe</p>
                 </div>
 
                 <div class="hidden sm:block sm:shrink-0">
-                    <img alt=""
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-                        class="size-16 rounded-lg object-cover shadow-sm" />
+                    <img alt="" src="{{category.icon}}" class="size-16 rounded-lg object-cover shadow-sm" />
                 </div>
             </div>
 
             <div class="mt-4">
                 <p class="text-pretty text-sm text-gray-500">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum provident a, ipsa
-                    maiores deleniti consectetur nobis et eaque.
+                    {{category.desc}}
+
                 </p>
             </div>
 
             <dl class="mt-6 flex gap-4 sm:gap-6">
-                <div class="flex flex-col-reverse">
-                    <dt class="text-sm font-medium text-gray-600">Published</dt>
-                    <dd class="text-xs text-gray-500">31st June, 2021</dd>
+                <div class="flex gap-1 items-center justify-center">
+                    <img width="24" height="24" src="https://img.icons8.com/material-sharp/24/12B886/full-stop.png"
+                        alt="full-stop" />
+                    <dt class="text-sm  text-gray-600">Opened</dt>
+                    <dd class="text-sm font-medium text-gray-500">{{category.counts}}</dd>
                 </div>
 
-                <div class="flex flex-col-reverse">
-                    <dt class="text-sm font-medium text-gray-600">Reading time</dt>
-                    <dd class="text-xs text-gray-500">3 minute</dd>
-                </div>
-            </dl>
-        </a>
-        <a href="#" class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 bg-white">
-            <span
-                class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
-
-            <div class="sm:flex sm:justify-between sm:gap-4">
-                <div>
-                    <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
-                        Building a SaaS product as a software developer
-                    </h3>
-
-                    <p class="mt-1 text-xs font-medium text-gray-600">By John Doe</p>
-                </div>
-
-                <div class="hidden sm:block sm:shrink-0">
-                    <img alt=""
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-                        class="size-16 rounded-lg object-cover shadow-sm" />
-                </div>
-            </div>
-
-            <div class="mt-4">
-                <p class="text-pretty text-sm text-gray-500">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum provident a, ipsa
-                    maiores deleniti consectetur nobis et eaque.
-                </p>
-            </div>
-
-            <dl class="mt-6 flex gap-4 sm:gap-6">
-                <div class="flex flex-col-reverse">
-                    <dt class="text-sm font-medium text-gray-600">Published</dt>
-                    <dd class="text-xs text-gray-500">31st June, 2021</dd>
-                </div>
-
-                <div class="flex flex-col-reverse">
-                    <dt class="text-sm font-medium text-gray-600">Reading time</dt>
-                    <dd class="text-xs text-gray-500">3 minute</dd>
+                <div class="flex gap-1 items-center justify-center">
+                    <img width="24" height="24" src="https://img.icons8.com/material-sharp/24/FA5252/full-stop.png"
+                        alt="full-stop" />
+                    <dt class="text-sm  text-gray-600">Closed</dt>
+                    <dd class="text-sm font-medium text-gray-500">{{category.closed}}</dd>
                 </div>
             </dl>
         </a>
+        {% endfor %}
     </div>
 </div>

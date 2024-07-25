@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from categories.models import Categories
 def home(request):
-    categories = Categories.objects.get()
+    categories = Categories.objects.all()
     props = {
         "categories" : categories
     }
