@@ -2,7 +2,8 @@
     <h3 class="text-4xl font-bold mx-auto">Find your niche</h3>
     <div class="flex gap-6">
         {% for category in categories %}
-        <a href="#" class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 bg-white">
+        <a href="{% url 'posts' %}?category={{category.name}}"
+            class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 bg-white">
             <span
                 class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
 
