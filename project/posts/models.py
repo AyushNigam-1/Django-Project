@@ -3,7 +3,7 @@ from categories.models import Categories
 class Post(models.Model):
     category = models.ForeignKey(Categories, on_delete=models.CASCADE)
     location = models.CharField(max_length=2000)
-    desc = models.IntegerField(default=0)
+    desc = models.CharField(max_length=10000)
     type =models.JSONField(default=list)
     applicants = models.CharField(max_length=1000)
     posted_at = models.DateTimeField(auto_now_add=True) 

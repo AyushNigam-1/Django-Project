@@ -19,13 +19,12 @@ def posts(request):
     if request.method == 'POST':
         pass
     
-    category = request.GET.get("category")
-    print(category)
-    category = Categories.objects.get(name = category)
+    category_name = request.GET.get("category")
+    category = Categories.objects.get(name = category_name)
     posts = Post.objects.all().filter(category = category)
-    # print(posts)
     props={
-        "posts":posts
+        "posts":posts,
+        "category":category_name,
     }
     return render(request , "posts.html",props)
     
