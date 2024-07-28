@@ -27,4 +27,12 @@ def posts(request):
         "category":category_name,
     }
     return render(request , "posts.html",props)
-    
+
+def post(request):
+    id = request.GET.get("id")
+    post = Post.objects.get(id=id)
+    props = {
+        "post":post
+    }
+    print(props)
+    return render(request , "post.html" ,props)
