@@ -1,7 +1,9 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from categories.models import Categories
 from posts.models import Post
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.contrib.auth import authenticate
 def home(request):
     categories = Categories.objects.all()
     props = {
@@ -36,3 +38,23 @@ def post(request):
     }
     print(props)
     return render(request , "post.html" ,props)
+
+def login(request):
+    if request.method == 'POST': 
+        email = request.GET.get("email")
+        password = request.GET.get("password")
+       
+        if not User.objects.filter(email = email).exists():
+            messages.error(request , 'Please check email and password again')
+            return render(request , 'login.html')
+
+        user = authenticate(email=email , password = password)
+
+        if user is None:
+            messages.error(request , 'Please check email and password again')
+            return render(request , 'login.html')
+        else:
+            login(user)
+            return redirect('')
+    
+    return render(request,'login.html')

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block navbar %}
+{% endblock %}
+{% block content %}
+<!-- component -->
+<div class="max-w-lg mx-auto  bg-white rounded-lg shadow-md px-8 py-10 flex flex-col items-center">
+    {% if messages %}
+    {% for msg in messages %}
+    <div role="alert" class="rounded border-s-4 border-red-500 bg-red-50 p-4">
+        <div class="flex items-center gap-2 text-red-800">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                <path fill-rule="evenodd"
+                    d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                    clip-rule="evenodd" />
+            </svg>
+
+            <strong class="block font-medium"> {{msg}}</strong>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <h1 class="text-xl font-bold text-center text-gray-700  mb-8">Welcome to My Company</h1>
+    <form class="w-full flex flex-col gap-4" method="post"
+        oninput='confirm_password.setCustomValidity(confirm_password.value != password.value ? "Passwords do not match." : "")'>
+        {% csrf_token %}
+
+        <!-- <div class="flex items-start flex-col justify-start">
+            <label for="firstName" class="text-sm text-gray-700  mr-2">First Name:</label>
+            <input type="text" id="firstName" name="firstName"
+                class="w-full px-3   py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+
+        <div class="flex items-start flex-col justify-start">
+            <label for="lastName" class="text-sm text-gray-700  mr-2">Last Name:</label>
+            <input type="text" id="lastName" name="lastName"
+                class="w-full px-3   py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+
+        <div class="flex items-start flex-col justify-start">
+            <label for="username" class="text-sm text-gray-700  mr-2">Username:</label>
+            <input type="text" id="username" name="username"
+                class="w-full px-3   py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div> -->
+
+        <div class="flex items-start flex-col justify-start">
+            <label for="email" class="text-sm text-gray-700  mr-2">Email:</label>
+            <input type="email" id="email" name="email"
+                class="w-full px-3   py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+
+        <div class="flex items-start flex-col justify-start">
+            <label for="password" class="text-sm text-gray-700  mr-2">Password:</label>
+            <input type="password" id="password" name="password"
+                class="w-full px-3   py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+
+        <div class="flex items-start flex-col justify-start">
+            <label for="confirm_password" class="text-sm text-gray-700  mr-2">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password"
+                class="w-full px-3   py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+
+        <button type="submit"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md shadow-sm">Register</button>
+    </form>
+
+    <div class="mt-4 text-center">
+        <span class="text-sm text-gray-500 dark:text-gray-300">Already have an account? </span>
+        <a href="#" class="text-blue-500 hover:text-blue-600">Login</a>
+    </div>
+    </form>
+</div>
+{% endblock %}
