@@ -20,9 +20,10 @@ from project import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home ),
+    path('', views.home,name="home" ),
     path('auth', views.auth ),
     path('posts', views.posts,name='posts' ),
     path('post', views.post,name='post' ),
-    path('login', views.login,name='login' ),
+    path('login', views.login_user,name='login' ),
+    path('register', views.register,name='register' ),
 ]

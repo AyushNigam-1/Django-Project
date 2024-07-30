@@ -23,28 +23,9 @@
     <form class="w-full flex flex-col gap-4" method="post"
         oninput='confirm_password.setCustomValidity(confirm_password.value != password.value ? "Passwords do not match." : "")'>
         {% csrf_token %}
-
-        <!-- <div class="flex items-start flex-col justify-start">
-            <label for="firstName" class="text-sm text-gray-700  mr-2">First Name:</label>
-            <input type="text" id="firstName" name="firstName"
-                class="w-full px-3   py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
-        </div>
-
-        <div class="flex items-start flex-col justify-start">
-            <label for="lastName" class="text-sm text-gray-700  mr-2">Last Name:</label>
-            <input type="text" id="lastName" name="lastName"
-                class="w-full px-3   py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
-        </div>
-
         <div class="flex items-start flex-col justify-start">
             <label for="username" class="text-sm text-gray-700  mr-2">Username:</label>
             <input type="text" id="username" name="username"
-                class="w-full px-3   py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
-        </div> -->
-
-        <div class="flex items-start flex-col justify-start">
-            <label for="email" class="text-sm text-gray-700  mr-2">Email:</label>
-            <input type="email" id="email" name="email"
                 class="w-full px-3   py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
         </div>
 
@@ -66,7 +47,7 @@
 
     <div class="mt-4 text-center">
         <span class="text-sm text-gray-500 dark:text-gray-300">Already have an account? </span>
-        <a href="#" class="text-blue-500 hover:text-blue-600">Login</a>
+        <a href="{% url 'login' %}" class="text-blue-500 hover:text-blue-600">Login</a>
     </div>
     </form>
 </div>
