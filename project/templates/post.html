@@ -3,66 +3,145 @@
 
 
 <!-- <h1>Working {{post.category.name}}</h1> -->
-<article class="rounded-xl bg-white p-4 sm:p-6 lg:p-8">
-    <div class="flex items-start sm:gap-8">
-        <img width="96" height="96" src="https://img.icons8.com/deco-color/96/organization.png" alt="organization" />
+<div class="container mx-auto">
+    <article class="rounded-xl bg-white p-4 sm:p-6 lg:p-8 lg:pt-2">
+        <div class="flex items-start sm:gap-8">
+            <div class="flex flex-col gap-4">
+                <img width="220" height="220" src="https://img.icons8.com/deco-color/96/organization.png"
+                    alt="organization" />
+                <hr>
+                <div>
+                    <h5 class="text-md font-semibold text-gray-500">Name</h5>
+                    <p class="text-lg font-semibold text-gray-900">
+                        Neon Technologies
+                    </p>
+                </div>
+                <hr>
+                <div>
+                    <h5 class="text-md font-semibold text-gray-500">Category</h5>
+                    <p class="text-lg font-semibold text-gray-900">
+                        Software Development
+                    </p>
+                </div>
+                <hr>
+                <div>
+                    <h5 class="text-md font-semibold text-gray-500">Contact Number</h5>
+                    <p class="text-lg font-semibold text-gray-900">
+                        +919696326695
+                    </p>
+                </div>
+                <hr>
+                <div>
+                    <h5 class="text-md font-semibold text-gray-500">Email</h5>
+                    <p class="text-lg font-semibold text-gray-900">
+                        ayushnigam@gmail.com
+                    </p>
+                </div>
+                <hr>
+                <div>
+                    <h5 class="text-md font-semibold text-gray-500">Address</h5>
+                    <p class="text-lg font-semibold text-gray-900">
+                        {{post.location}}
+                    </p>
+                </div>
+                <hr>
+                <div>
+                    <h5 class="text-md font-semibold text-gray-500">Linekdin Account</h5>
+                    <a href="www.linkedin.com/in/ayush-nigam-a80066308" class="text-lg font-semibold text-gray-900">
+                        www.linkedin.com/in/ayush-nigam-a80066308
+                    </a>
+                </div>
+            </div>
+            <div class="flex flex-col gap-5">
+                <div class="flex justify-between items-center sticky top-0 bg-white z-10 py-3">
+                    <h3 class="text-3xl font-bold">
+                        {{post.category.name}}
+                    </h3>
+                    <a class="group flex items-center justify-between gap-4 rounded-lg border border-teal-600  bg-teal-600 px-5 py-2 transition-colors hover:bg-transparent focus:outline-none focus:ring"
+                        href="#">
+                        <span
+                            class="font-medium text-white transition-colors group-hover:text-teal-600 group-active:text-teal-500">
+                            Apply Now
+                        </span>
+                    </a>
+                </div>
+                <div>
+                    <h5 class="text-md font-semibold text-gray-500">Job Role</h5>
+                    <p class="text-lg font-semibold text-gray-900">
+                        {{post.category.name}}
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-md font-semibold text-gray-500">Salary</h5>
+                    <p class="text-lg font-semibold text-gray-900">
+                        {{post.desc}}
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-md font-semibold text-gray-500">Location</h5>
+                    <p class="text-lg font-semibold text-gray-900">
+                        {{post.desc}}
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-md font-semibold text-gray-500">Time</h5>
+                    <p class="text-lg font-semibold text-gray-900">
+                        {{post.desc}}
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-md font-semibold text-gray-500">Description</h5>
+                    <p class="text-lg font-semibold text-gray-900">
+                        Design and implementation of state-of-the-art AI solutions.
+                        Assist in the development and implementation of AI models and systems, leveraging techniques
+                        such as Language Models (LLMs) and generative AI.
 
-        <div class="flex flex-col gap-5">
-
-            <h3 class="text-lg font-medium sm:text-xl">
-                <a href="#" class="hover:underline"> {{post.category.name}}</a>
-            </h3>
-            <div>
-                <h5 class="text-md font-bold text-gray-500">Job Role</h5>
-                <p class="text-lg font-semibold text-gray-900">
-                    {{post.category.name}}
-                </p>
-            </div>
-            <div>
-                <h5 class="text-md font-bold text-gray-500">Salary</h5>
-                <p class="text-lg font-semibold text-gray-900">
-                    {{post.desc}}
-                </p>
-            </div>
-            <div>
-                <h5 class="text-md font-bold text-gray-500">Location</h5>
-                <p class="text-lg font-semibold text-gray-900">
-                    {{post.desc}}
-                </p>
-            </div>
-            <div>
-                <h5 class="text-md font-bold text-gray-500">Time</h5>
-                <p class="text-lg font-semibold text-gray-900">
-                    {{post.desc}}
-                </p>
-            </div>
-            <div>
-                <h5 class="text-md font-bold text-gray-500">Description</h5>
-                <p class="text-lg font-semibold text-gray-900">
-                    {{post.desc}}
-                </p>
-            </div>
-
-            <div class="sm:flex sm:items-center sm:gap-2">
-                <div class="flex items-center gap-1 text-gray-500">
-                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-
-                    <p class="text-xs font-medium">48:32 minutes</p>
+                        Collaborate with stakeholders to identify business opportunities and define AI project goals.
+                        Stay updated with the latest advancements in generative AI techniques, such as LLMs, and
+                        evaluate their potential applications in solving enterprise challenges.
+                        Utilize generative AI techniques, such as LLMs, to develop innovative solutions for enterprise
+                        industry use cases.
+                        Integrate with relevant APIs and libraries, such as Azure Open AI GPT models and Hugging Face
+                        Transformers, to leverage pre-trained models and enhance generative AI capabilities.
+                        Implement and optimize end-to-end pipelines for generative AI projects, ensuring seamless data
+                        processing and model deployment.
+                        Utilize vector databases, such as Redis, and NoSQL databases to efficiently handle large-scale
+                        generative AI datasets and outputs.
+                        Implement similarity search algorithms and techniques to enable efficient and accurate retrieval
+                        of relevant information from generative AI outputs.
+                        Collaborate with domain experts, stakeholders, and clients to understand specific business
+                        requirements and tailor generative AI solutions accordingly.
+                        Conduct research and evaluation of advanced AI techniques, including transfer learning, domain
+                        adaptation, and model compression, to enhance performance and efficiency.
+                        Establish evaluation metrics and methodologies to assess the quality, coherence, and relevance
+                        of generative AI outputs for enterprise industry use cases.
+                        Ensure compliance with data privacy, security, and ethical considerations in AI applications.
+                        Leverage data engineering skills to curate, clean, and preprocess large-scale datasets for
+                        generative AI applications.
+                    </p>
                 </div>
 
-                <span class="hidden sm:block" aria-hidden="true">&middot;</span>
+                <!-- <div class="sm:flex sm:items-center sm:gap-2">
+                    <div class="flex items-center gap-1 text-gray-500">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
 
-                <p class="mt-2 text-xs font-medium text-gray-500 sm:mt-0">
-                    Featuring <a href="#" class="underline hover:text-gray-700">Barry</a>,
-                    <a href="#" class="underline hover:text-gray-700">Sandra</a> and
-                    <a href="#" class="underline hover:text-gray-700">August</a>
-                </p>
+                        <p class="text-xs font-medium">48:32 minutes</p>
+                    </div>
+
+                    <span class="hidden sm:block" aria-hidden="true">&middot;</span>
+
+                    <p class="mt-2 text-xs font-medium text-gray-500 sm:mt-0">
+                        Featuring <a href="#" class="underline hover:text-gray-700">Barry</a>,
+                        <a href="#" class="underline hover:text-gray-700">Sandra</a> and
+                        <a href="#" class="underline hover:text-gray-700">August</a>
+                    </p>
+                </div> -->
             </div>
         </div>
-    </div>
-</article>
+    </article>
+</div>
 {% endblock %}

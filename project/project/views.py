@@ -11,13 +11,7 @@ def home(request):
     props = {
         "categories" : categories
     }
-    
-    print(categories)
     return render(request , "home.html",props)
-def auth(request):
-    if request.method == 'POST':
-        pass
-    return render(request , "auth.html")
 
 def posts(request):
     if request.method == 'POST':
@@ -75,7 +69,7 @@ def register(request):
 
         user = User(first_name=first_name,last_name=last_name,username=username, email=email , password = make_password(password))
         user.save()
-        auth_login(user)
+        login(request,user=user)
         return redirect('home')
     
     return render(request,'register.html')
