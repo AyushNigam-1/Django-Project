@@ -3,7 +3,7 @@ from categories.models import Categories
 from posts.models import Post
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate , login
+from django.contrib.auth import authenticate , login ,logout
 from django.contrib.auth.hashers import make_password
 
 def home(request):
@@ -73,3 +73,8 @@ def register(request):
         return redirect('home')
     
     return render(request,'register.html')
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')
