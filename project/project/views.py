@@ -1,6 +1,7 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render ,get_object_or_404, redirect
 from categories.models import Categories
 from posts.models import Post
+from company.models import Company
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate , login ,logout
@@ -96,3 +97,62 @@ def register(request):
 def logout_user(request):
     logout(request)
     return redirect('home')
+
+
+def createpost(request,id):
+    if request.method == 'POST':
+        title = request.POST.get("title")
+        category_name = request.POST.get("category")
+        location = request.POST.get("location")
+        desc = request.POST.get("desc")
+        salary = request.POST.get("salary")
+        category = Categories.objects.get(name = category_name)
+        company = Company.objects.get(id = id)
+        if not location:
+            location = company.location
+        try:
+            post = Post(title=title,category=category,company=company,location = location,salary=salary,desc=desc)
+            post.save()
+        except Exception :
+            messages.error(request , 'Something went wrong , Please try again !')
+        else:
+            messages.success(request, 'Your data has been processed successfully!')
+            url = f"posts/?category={category_name}"
+            return redirect(url)
+        
+        return render(request,"createpost")
+    
+    
+def apply(request,id):
+    if request.method == 'POST':
+        post = get_object_or_404(Post, id=id)
+        try:
+            post.applicants.add(request.user)
+            post.save()
+        except:
+            messages.error(request , 'Something went wrong , Please try again !')
+        else:
+            messages.success(request, 'Your data has been processed successfully!')
+            url = f'post/id={id}'
+            return redirect(url)
+            
+    cv_url = request.user.resume_url
+    props={
+        "url":cv_url,
+        "id":id 
+        }
+    return render(request , "apply.html",props)
+
+
+        
+
+    
+    
+
+
+        
+        
+        
+        
+
+        
