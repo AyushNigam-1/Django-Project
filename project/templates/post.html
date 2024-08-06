@@ -13,7 +13,7 @@
                 <div>
                     <h5 class="text-md font-semibold text-gray-500">Name</h5>
                     <p class="text-lg font-semibold text-gray-900">
-                        Neon Technologies
+                       {{post.company.name}}
                     </p>
                 </div>
                 <hr>
@@ -27,21 +27,21 @@
                 <div>
                     <h5 class="text-md font-semibold text-gray-500">Contact Number</h5>
                     <p class="text-lg font-semibold text-gray-900">
-                        +919696326695
+                        {{post.company.phone_number}}
                     </p>
                 </div>
                 <hr>
                 <div>
                     <h5 class="text-md font-semibold text-gray-500">Email</h5>
                     <p class="text-lg font-semibold text-gray-900">
-                        ayushnigam@gmail.com
+                        {{post.company.email}}
                     </p>
                 </div>
                 <hr>
                 <div>
                     <h5 class="text-md font-semibold text-gray-500">Address</h5>
                     <p class="text-lg font-semibold text-gray-900">
-                        {{post.location}}
+                        {{post.company.location}}
                     </p>
                 </div>
                 <hr>
@@ -49,7 +49,8 @@
                     <h5 class="text-md font-semibold text-gray-500">Linekdin Account</h5>
                     <a href="https://www.linkedin.com/in/ayush-nigam-a80066308"
                         class="text-lg font-semibold text-gray-900" target="_blank">
-                        www.linkedin.com/in/ayush-nigam-a80066308
+                        {{post.company.ld_id}}
+
                     </a>
                 </div>
             </div>
@@ -69,25 +70,25 @@
                 <div>
                     <h5 class="text-md font-semibold text-gray-500">Job Role</h5>
                     <p class="text-lg font-semibold text-gray-900">
-                        {{post.category.name}}
+                        {{post.title}}
                     </p>
                 </div>
                 <div>
                     <h5 class="text-md font-semibold text-gray-500">Salary</h5>
                     <p class="text-lg font-semibold text-gray-900">
-                        {{post.desc}}
+                        {{post.salary}}
                     </p>
                 </div>
                 <div>
                     <h5 class="text-md font-semibold text-gray-500">Location</h5>
                     <p class="text-lg font-semibold text-gray-900">
-                        {{post.desc}}
+                        {{post.location}}
                     </p>
                 </div>
                 <div>
                     <h5 class="text-md font-semibold text-gray-500">Time</h5>
                     <p class="text-lg font-semibold text-gray-900">
-                        {{post.desc}}
+                        {{post.posted_at}}
                     </p>
                 </div>
                 <div>
