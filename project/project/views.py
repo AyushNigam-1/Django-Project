@@ -9,10 +9,17 @@ from django.contrib.auth.hashers import make_password
 
 def home(request):
     categories = Categories.objects.all()
+    for category in categories:
+        category.active_post_count = category.posts.filter(is_active=True).count()
+        category.inactive_post_count = category.posts.filter(is_active=False).count()
     props = {
         "categories" : categories
     }
     return render(request , "home.html",props)
+
+def profile(request):
+    return  render(request,"profile.html")
+
 
 def posts(request):
     if request.method == 'POST':
@@ -21,6 +28,8 @@ def posts(request):
     category_name = request.GET.get("category")
     category = Categories.objects.get(name = category_name)
     posts = Post.objects.all().filter(category = category)
+    for post in posts:
+        post.applicants_count = post.applicants.count()
     props={
         "posts":posts,
         "category":category_name,

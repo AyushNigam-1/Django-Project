@@ -40,9 +40,10 @@
 
             <div class="flex items-center gap-4">
                 {% if user.is_authenticated %}
-                <img class="w-10 h-10 rounded-full"
+                <a href="{% url 'profile' %}">
+                    <img class="w-10 h-10 rounded-full"
                     src="https://img.icons8.com/material-rounded/24/12B886/user-male-circle.png" alt="Rounded avatar">
-
+                </a>
                 {% else %}
                 <div class="sm:flex sm:gap-4">
                     <a class="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"

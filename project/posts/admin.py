@@ -8,5 +8,3 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'posted_at'
 
 admin.site.register(Post, PostAdmin)
-
-# Register your models here.
