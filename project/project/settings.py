@@ -41,9 +41,8 @@ INSTALLED_APPS = [
     'categories',
     'posts',
     'company',
-    'users'
+    'metadata'
 ]
-AUTH_USER_MODEL = 'users.user'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
