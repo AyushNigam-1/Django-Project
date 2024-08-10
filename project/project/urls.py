@@ -28,5 +28,7 @@ urlpatterns = [
     path('logout', views.logout_user,name='logout' ),
     path('createpost/<int:id>', views.createpost,name='createpost' ),
     path('profile', views.profile,name='profile' ),
+    path('upload', views.upload_document,name='upload' ),
+
 
 ]

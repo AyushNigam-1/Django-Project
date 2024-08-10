@@ -2,11 +2,13 @@ from django.shortcuts import render ,get_object_or_404, redirect
 from categories.models import Categories
 from posts.models import Post
 from company.models import Company
+from metadata.models import Metadata
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate , login ,logout
 from django.contrib.auth.hashers import make_password
-
+from django.contrib.auth.decorators import login_required
+import base64
 def home(request):
     categories = Categories.objects.all()
     for category in categories:
@@ -16,9 +18,6 @@ def home(request):
         "categories" : categories
     }
     return render(request , "home.html",props)
-
-def profile(request):
-    return  render(request,"profile.html")
 
 
 def posts(request):
@@ -153,6 +152,35 @@ def apply(request,id):
     return render(request , "apply.html",props)
 
 
+@login_required
+def upload_document(request):
+    print(request.FILES.get('document'))
+    if request.method == 'POST':
+        user = request.user
+        metadata, created = Metadata.objects.get_or_create(user=user)
+        file = request.FILES.get('document')  # Assuming the file is named 'document' in the request
+
+        if file:
+            metadata.document = file
+            metadata.save()
+            return redirect('profile')  # Redirect to a success page
+
+    return render(request, 'upload_document.html')  # Replace with your template
+
+
+@login_required
+def profile(request):
+    metadata = Metadata.objects.get_or_create(user=request.user)
+    print(metadata)
+    if metadata:
+        with open(metadata, 'rb') as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+
+    context = {'image_data': encoded_string}
+    props ={
+        "metadata":metadata
+    }
+    return  render(request,"profile.html",props)
         
 
     
