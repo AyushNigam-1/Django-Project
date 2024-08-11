@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate , login ,logout
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
-import base64
+from django.conf import settings
 def home(request):
     categories = Categories.objects.all()
     for category in categories:
@@ -170,18 +170,14 @@ def upload_document(request):
 
 @login_required
 def profile(request):
-    metadata = Metadata.objects.get_or_create(user=request.user)
-    print(metadata)
+    metadata = Metadata.objects.get_or_create(user=request.user)[0]
     if metadata:
-        with open(metadata, 'rb') as image_file:
-            encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+        document_url = settings.MEDIA_URL+ str(metadata.document)
 
-    context = {'image_data': encoded_string}
-    props ={
-        "metadata":metadata
+    props = {
+        "document_url": document_url
     }
-    return  render(request,"profile.html",props)
-        
+    return render(request, "profile.html", props) 
 
     
     
