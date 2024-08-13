@@ -3,11 +3,14 @@
     <div class="container mx-auto flex flex-col gap-6">
         <article class="rounded-xl bg-white p-4 sm:p-6 lg:p-8">
             <div class="flex items-start sm:gap-8">
-              <!-- <div
-                class="hidden sm:grid sm:size-20 sm:shrink-0 sm:place-content-center sm:rounded-full sm:border-2 sm:border-indigo-500"
-                aria-hidden="true"
-              > -->
-              <img width="120" height="120" src="https://img.icons8.com/ios-filled/120/40C057/name.png" alt="name"/>              <!-- </div> -->
+              <div class="relative w-96">
+                <form  method="post" enctype="multipart/form-data" action="{% url 'upload_profile_pic' %}" id="image">
+                  {% csrf_token %}
+                  <input type="file" onchange="image.submit()" class="hidden" name="profile_photo" id="img_input">
+                  <img width="160" height="160" class="absolute" src="https://img.icons8.com/ios-filled/120/40C057/name.png" alt="name"/>              <!-- </div> -->
+                  <button onclick="img_input.click()"class="absolute p-1 bg-white shadow-md right-0 rounded-full top-0"> <img width="36" height="36" src="https://img.icons8.com/color/36/add--v1.png" alt="add--v1"/></button>
+                </form>
+              </div>
               <div class="flex flex-col gap-4">
                 <div>
                   <h3 class="text-2xl font-medium ">
@@ -37,11 +40,11 @@
             </div>
           </article>
           <div class="flex justify-between">
-              <h3 class="text-lg font-bold">Document</h3>
-              <form method="post" enctype="multipart/form-data" action="{% url 'upload' %}">
+              <h3 class="text-2xl font-bold">Document</h3>
+              <form method="post" enctype="multipart/form-data" action="{% url 'upload' %}" id="doc">
                   {% csrf_token %}
-                  <input type="file" name="document">
-                  <button type="submit">Upload</button>
+                  <input type="file" onchange="doc.submit()" class="hidden" name="document" id="file">
+                  <button onclick="file.click()" type="button" class=" py-2 px-4 bg-teal-600 rounded-md text-white flex justify-center items-center gap-2 "> <img width="20" height="20" src="https://img.icons8.com/material-outlined/24/FFFFFF/upload--v1.png" alt="upload--v1"/>Upload</button>
                 </form>
             </div>
             {% if document_url %}
@@ -49,7 +52,7 @@
             Your browser does not support iframes.
         </iframe>
     {% else %}
-        <p>No PDF file uploaded.</p>
+        <p class="flex justify-center py-3 font-bold text-2xl">No PDF file uploaded.</p>
     {% endif %}
         </div>
 {% endblock %}

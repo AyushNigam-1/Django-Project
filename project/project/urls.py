@@ -31,6 +31,7 @@ urlpatterns = [
     path('createpost/<int:id>', views.createpost,name='createpost' ),
     path('profile', views.profile,name='profile' ),
     path('upload', views.upload_document,name='upload' ),
+    path('upload_profile_pic', views.upload_profile_pic,name='upload_profile_pic' ),
 
 
 ]

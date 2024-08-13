@@ -158,14 +158,28 @@ def upload_document(request):
     if request.method == 'POST':
         user = request.user
         metadata, created = Metadata.objects.get_or_create(user=user)
-        file = request.FILES.get('document')  # Assuming the file is named 'document' in the request
+        file = request.FILES.get('document') 
 
         if file:
             metadata.document = file
             metadata.save()
-            return redirect('profile')  # Redirect to a success page
+            return redirect('profile')  
 
-    return render(request, 'upload_document.html')  # Replace with your template
+
+def upload_profile_pic(request):
+    if request.method == 'POST':
+        file = request.FILES.get('profile_photo')
+        print(file) 
+        # user = request.user
+        # metadata, created = Metadata.objects.get_or_create(user=user)
+        # file = request.FILES.get('profile_photo') 
+
+        # if file:
+        #     metadata.profile_photo = file
+        #     metadata.save()
+        #     return redirect('profile')  
+
+    return render(request, 'upload_document.html') 
 
 
 @login_required
