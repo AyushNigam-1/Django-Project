@@ -38,8 +38,11 @@ def posts(request):
 def post(request):
     id = request.GET.get("id")
     post = Post.objects.get(id=id)
+    user_is_applicant = request.user in post.applicants.all()
+    print(user_is_applicant)
     props = {
-        "post":post
+        "post": post,
+        "is_applicant": user_is_applicant
     }
     print(props)
     return render(request , "post.html" ,props)
@@ -157,39 +160,34 @@ def upload_document(request):
     print(request.FILES.get('document'))
     if request.method == 'POST':
         user = request.user
-        metadata, created = Metadata.objects.get_or_create(user=user)
+        metadata = Metadata.objects.get_or_create(user=user)[0]
         file = request.FILES.get('document') 
-
         if file:
             metadata.document = file
             metadata.save()
             return redirect('profile')  
 
-
+@login_required
 def upload_profile_pic(request):
     if request.method == 'POST':
         file = request.FILES.get('profile_photo')
-        print(file) 
-        # user = request.user
-        # metadata, created = Metadata.objects.get_or_create(user=user)
-        # file = request.FILES.get('profile_photo') 
-
-        # if file:
-        #     metadata.profile_photo = file
-        #     metadata.save()
-        #     return redirect('profile')  
-
-    return render(request, 'upload_document.html') 
-
+        user = request.user
+        metadata = Metadata.objects.get_or_create(user=user)[0]
+        file = request.FILES.get('profile_photo') 
+        if file:
+            metadata.profile_photo = file
+            metadata.save()
+            return redirect('profile')  
 
 @login_required
 def profile(request):
     metadata = Metadata.objects.get_or_create(user=request.user)[0]
     if metadata:
         document_url = settings.MEDIA_URL+ str(metadata.document)
-
+        profile_pic_url = metadata.profile_photo.url if metadata.profile_photo else None
     props = {
-        "document_url": document_url
+        "document_url": document_url,
+        "profile_pic_url":profile_pic_url
     }
     return render(request, "profile.html", props) 
 

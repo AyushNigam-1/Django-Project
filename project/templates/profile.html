@@ -1,58 +1,71 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container mx-auto flex flex-col gap-6">
-        <article class="rounded-xl bg-white p-4 sm:p-6 lg:p-8">
-            <div class="flex items-start sm:gap-8">
-              <div class="relative w-96">
-                <form  method="post" enctype="multipart/form-data" action="{% url 'upload_profile_pic' %}" id="image">
-                  {% csrf_token %}
-                  <input type="file" onchange="image.submit()" class="hidden" name="profile_photo" id="img_input">
-                  <img width="160" height="160" class="absolute" src="https://img.icons8.com/ios-filled/120/40C057/name.png" alt="name"/>              <!-- </div> -->
-                  <button onclick="img_input.click()"class="absolute p-1 bg-white shadow-md right-0 rounded-full top-0"> <img width="36" height="36" src="https://img.icons8.com/color/36/add--v1.png" alt="add--v1"/></button>
-                </form>
-              </div>
-              <div class="flex flex-col gap-4">
-                <div>
-                  <h3 class="text-2xl font-medium ">
-                    <a href="#" class="hover:underline"> {{ user.first_name|add:" "|add:user.last_name }} , 21</a>
-                  </h3>
-                  <p class="mt-1 text-md text-gray-500 font-semibold">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam nulla amet voluptatum sit
-                    rerum, atque, quo culpa ut necessitatibus eius suscipit eum accusamus, aperiam voluptas
-                    exercitationem facere aliquid fuga. Sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, quaerat autem? Libero quos quae repellat nihil accusamus hic quas, quam qui delectus cupiditate quasi in! Provident praesentium ad qui, nulla ea ullam eum dolore consectetur, odio dolorem maiores non, necessitatibus accusantium! Corrupti, harum ex. Excepturi!
-                  </p>
-                </div>
-          <div class="flex justify-between">
-            <div>
-              <h6 class="text-md font-semibold text-gray-500" >Email</h6>
-              <h5 class="text-md font-semibold text-gray-500" >ayushnigam843@gmail.com</h5>
-            </div>
-            <div>
-              <h6 class="text-md font-semibold text-gray-500" >Contact Number</h6>
-              <h5 class="text-md font-semibold text-gray-500" >+91 9696326695</h5>
-            </div>
-            <div>
-              <h6 class="text-md font-semibold text-gray-500" >Location</h6>
-              <h5 class="text-md font-semibold text-gray-500" >Unnao , Uttar Pradesh</h5>
-            </div>
-          </div>
-              </div>
-            </div>
-          </article>
-          <div class="flex justify-between">
-              <h3 class="text-2xl font-bold">Document</h3>
-              <form method="post" enctype="multipart/form-data" action="{% url 'upload' %}" id="doc">
-                  {% csrf_token %}
-                  <input type="file" onchange="doc.submit()" class="hidden" name="document" id="file">
-                  <button onclick="file.click()" type="button" class=" py-2 px-4 bg-teal-600 rounded-md text-white flex justify-center items-center gap-2 "> <img width="20" height="20" src="https://img.icons8.com/material-outlined/24/FFFFFF/upload--v1.png" alt="upload--v1"/>Upload</button>
-                </form>
-            </div>
-            {% if document_url %}
-        <iframe src="{{document_url}}" width="100%" height="600px">
-            Your browser does not support iframes.
-        </iframe>
-    {% else %}
-        <p class="flex justify-center py-3 font-bold text-2xl">No PDF file uploaded.</p>
-    {% endif %}
+<div class="container mx-auto flex flex-col gap-6">
+  <article class="rounded-xl bg-white p-4 sm:p-6 lg:p-8">
+    <div class="grid grid-cols-6 gap-4 sm:gap-8 relative">
+      <div class="relative h-full col-span-1 ">
+        <form method="post" class="relative" enctype="multipart/form-data" action="{% url 'upload_profile_pic' %}" id="image">
+          {% csrf_token %}
+          <input type="file" onchange="image.submit()" class="hidden" name="profile_photo" id="img_input">
+          {% if profile_pic_url %}
+          <img width="200" height="200" class="absolute rounded-md shadow-md" src="{{profile_pic_url}}" alt="name" />
+          {% else %}
+          <img width="160" height="160" class="absolute" src="https://img.icons8.com/ios-filled/120/40C057/name.png"
+            alt="name" />
+          {% endif %}
+          <button onclick="img_input.click()" type="button"
+            class="absolute p-[0.5px] bg-white  right-0 rounded-full top-44"> <img width="42" height="42"
+              src="https://img.icons8.com/color/42/add--v1.png" class="relative" alt="add--v1" /></button>
+        </form>
+      </div>
+      <div class="flex flex-col gap-4 col-span-5">
+        <div>
+          <h3 class="text-2xl font-medium ">
+            <a href="#" class="hover:underline"> {{ user.first_name|add:" "|add:user.last_name }} , 21</a>
+          </h3>
+          <p class="mt-1 text-md text-gray-500 font-semibold">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam nulla amet voluptatum sit
+            rerum, atque, quo culpa ut necessitatibus eius suscipit eum accusamus, aperiam voluptas
+            exercitationem facere aliquid fuga. Sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            quaerat autem? Libero quos quae repellat nihil accusamus hic quas, quam qui delectus cupiditate quasi in!
+            Provident praesentium ad qui, nulla ea ullam eum dolore consectetur, odio dolorem maiores non,
+            necessitatibus accusantium! Corrupti, harum ex. Excepturi!
+          </p>
         </div>
+        <div class="flex justify-between">
+          <div>
+            <h6 class="text-md font-semibold text-gray-500">Email</h6>
+            <h5 class="text-md font-semibold text-gray-500">ayushnigam843@gmail.com</h5>
+          </div>
+          <div>
+            <h6 class="text-md font-semibold text-gray-500">Contact Number</h6>
+            <h5 class="text-md font-semibold text-gray-500">+91 9696326695</h5>
+          </div>
+          <div>
+            <h6 class="text-md font-semibold text-gray-500">Location</h6>
+            <h5 class="text-md font-semibold text-gray-500">Unnao , Uttar Pradesh</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div class="flex justify-between">
+    <h3 class="text-2xl font-bold">Document</h3>
+    <form method="post" enctype="multipart/form-data" action="{% url 'upload' %}" id="doc">
+      {% csrf_token %}
+      <input type="file" onchange="doc.submit()" class="hidden" name="document" id="file">
+      <button onclick="file.click()" type="button"
+        class=" py-2 px-4 bg-teal-600 rounded-md text-white flex justify-center items-center gap-2 "> <img width="20"
+          height="20" src="https://img.icons8.com/material-outlined/24/FFFFFF/upload--v1.png"
+          alt="upload--v1" />Upload</button>
+    </form>
+  </div>
+  {% if document_url %}
+  <iframe src="{{document_url}}" width="100%" height="600px">
+    Your browser does not support iframes.
+  </iframe>
+  {% else %}
+  <p class="flex justify-center py-3 font-bold text-2xl">No PDF file uploaded.</p>
+  {% endif %}
+</div>
 {% endblock %}

@@ -13,7 +13,7 @@
                 <div>
                     <h5 class="text-md font-semibold text-gray-500">Name</h5>
                     <p class="text-lg font-semibold text-gray-900">
-                       {{post.company.name}}
+                        {{post.company.name}}
                     </p>
                 </div>
                 <hr>
@@ -59,13 +59,27 @@
                     <h3 class="text-3xl font-bold">
                         {{post.category.name}}
                     </h3>
-                    <a class="group flex items-center justify-between gap-4 rounded-lg border border-teal-600  bg-teal-600 px-5 py-2 transition-colors hover:bg-transparent focus:outline-none focus:ring"
-                        href="#">
+                    {% if is_applicant %}
+                    <button
+                        class="group flex items-center justify-between gap-4 rounded-lg border border-teal-600  bg-teal-600 px-5 py-2 transition-colors hover:bg-transparent focus:outline-none focus:ring"
+                        href="#" disabled>
                         <span
                             class="font-medium text-white transition-colors group-hover:text-teal-600 group-active:text-teal-500">
-                            Apply Now
+                            Applied
                         </span>
-                    </a>
+                    </button>
+                    {% else %}
+                    <form action="{% url 'apply' %}" method="post">
+                        <button type="submit"
+                            class="group flex items-center justify-between gap-4 rounded-lg border border-teal-600  bg-teal-600 px-5 py-2 transition-colors hover:bg-transparent focus:outline-none focus:ring"
+                            href="#">
+                            <span
+                                class="font-medium text-white transition-colors group-hover:text-teal-600 group-active:text-teal-500">
+                                Apply Now
+                            </span>
+                        </button>
+                    </form>
+                    {% endif %}
                 </div>
                 <div>
                     <h5 class="text-md font-semibold text-gray-500">Job Role</h5>
