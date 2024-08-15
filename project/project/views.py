@@ -146,13 +146,7 @@ def apply(request,id):
             messages.success(request, 'Your data has been processed successfully!')
             url = f'post/id={id}'
             return redirect(url)
-            
-    cv_url = request.user.resume_url
-    props={
-        "url":cv_url,
-        "id":id 
-        }
-    return render(request , "apply.html",props)
+        
 
 
 @login_required
@@ -182,6 +176,8 @@ def upload_profile_pic(request):
 @login_required
 def profile(request):
     metadata = Metadata.objects.get_or_create(user=request.user)[0]
+    document_url = None
+    profile_pic_url = None
     if metadata:
         document_url = settings.MEDIA_URL+ str(metadata.document)
         profile_pic_url = metadata.profile_photo.url if metadata.profile_photo else None
