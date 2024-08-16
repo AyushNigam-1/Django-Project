@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate , login ,logout
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.db.models import Q
 def home(request):
     categories = Categories.objects.all()
     for category in categories:
@@ -132,7 +133,16 @@ def createpost(request,id):
             return redirect(url)
         
         return render(request,"createpost")
-    
+ 
+def search(request):
+    query = request.GET.get('q')  
+    print(query)
+    # if query:
+    #     categories = Categories.objects.filter(Q(name__icontains=query))
+    # props = {
+    #       "categories":categories
+    # }
+    return render(request , "home.html")
     
 def apply(request,id):
     if request.method == 'POST':
@@ -147,8 +157,6 @@ def apply(request,id):
             url = f'post/id={id}'
             return redirect(url)
         
-
-
 @login_required
 def upload_document(request):
     print(request.FILES.get('document'))
@@ -178,6 +186,7 @@ def profile(request):
     metadata = Metadata.objects.get_or_create(user=request.user)[0]
     document_url = None
     profile_pic_url = None
+    print("print", metadata.document , request.user)
     if metadata:
         document_url = settings.MEDIA_URL+ str(metadata.document)
         profile_pic_url = metadata.profile_photo.url if metadata.profile_photo else None

@@ -32,10 +32,8 @@ urlpatterns = [
     path('createpost/<int:id>', views.createpost,name='createpost' ),
     path('profile', views.profile,name='profile' ),
     path('upload', views.upload_document,name='upload' ),
+    path('search', views.search,name='search' ),
     path('upload_profile_pic', views.upload_profile_pic,name='upload_profile_pic' ),
-
-
 ]
-
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
