@@ -5,11 +5,10 @@
     <div class="relative mx-auto ">
         <form action="{% url 'search' %}"  id="search">
         <label for="Search" class="sr-only"> Search </label>
-        <input type="text" id="q" onkeyup="search.submit()" placeholder="Search for..." name="q" 
-            class="w-[820px] rounded-md border-gray-200 py-2.5 ps-3 pe-10 shadow-sm sm:text-sm" />
-        </form>
+        <input type="text" id="q" placeholder="Search for..." name="q" 
+            class="w-[820px] rounded-md border-gray-200 py-2.5 ps-3 pe-10 shadow-sm sm:text-sm"  />
         <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
-            <button type="button" class="text-gray-600 hover:text-gray-700">
+            <button type="submit" class="text-gray-600 hover:text-gray-700">
                 <span class="sr-only">Search</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="h-4 w-4">
@@ -18,7 +17,9 @@
                 </svg>
             </button>
         </span>
+    </form>
     </div>
+    
     <!-- {{categories}} -->
     {% include 'categories.html' %}
 </div>

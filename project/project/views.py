@@ -137,14 +137,18 @@ def createpost(request,id):
 def search(request):
     query = request.GET.get('q')  
     print(query)
-    # if query:
-    #     categories = Categories.objects.filter(Q(name__icontains=query))
-    # props = {
-    #       "categories":categories
-    # }
-    return render(request , "home.html")
-    
+    if query:
+        categories = Categories.objects.filter(Q(name__icontains=query))
+    props = {
+          "categories":categories
+    }
+    return render(request , "home.html",props)
+
 def apply(request,id):
+    url = f'/post?id={id}'
+    if not request.user.is_authenticated:
+        messages.error(request, 'You must be logged in to apply.')
+        return redirect(url)  
     if request.method == 'POST':
         post = get_object_or_404(Post, id=id)
         try:
@@ -195,6 +199,16 @@ def profile(request):
         "profile_pic_url":profile_pic_url
     }
     return render(request, "profile.html", props) 
+
+def company(request):
+    id = request.GET.get("id")
+    company = Company.objects.get(id=id)
+    props = {
+        "company": company,
+    }
+    print(props)
+    return render(request , "company.html" ,props)
+
 
     
     
