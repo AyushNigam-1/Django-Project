@@ -9,7 +9,7 @@
                     <img width="40" height="40" src="https://img.icons8.com/ios-filled/40/FA5252/private2.png" alt="private2"/>
                     <p  class="text-red-600 font-semibold text-nowrap text-xl " > {{ message }}</p>
                 </div>
-                <button class="p-2 rounded-full " onclick="notification.remove()">
+                <button class="p-2 rounded-full bg-red-100/2" onclick="notification.remove()">
                     <img width="24" height="24" src="https://img.icons8.com/ios/24/FA5252/delete-sign--v1.png" alt="delete-sign--v1"/>
                 </button>
             </div>
@@ -19,15 +19,19 @@
     <article class="rounded-xl bg-white p-4 sm:p-6 lg:p-8 lg:pt-2">
         <div class="flex items-start sm:gap-8">
             <div class="flex flex-col gap-4">
-                <img width="220" height="220" src="https://img.icons8.com/deco-color/96/organization.png"
+                <div class="">
+                    <img width="220" height="220" src="https://img.icons8.com/deco-color/96/organization.png"
                     alt="organization" />
+                    <a href="{% url 'company' %}?id={{post.company.id}}"> Visit </a>
+
+                </div>
                 <hr>
                 <div>
                     <h5 class="text-md font-semibold text-gray-500">Name</h5>
                     <p class="text-lg font-semibold text-gray-900">
                         {{post.company.name}}
                     </p>
-                    <a href="{% url 'company' %}?id={{post.company.id}}"> Visit </a>
+                  
                 </div>
                 <hr>
                 <div>

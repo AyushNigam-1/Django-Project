@@ -20,10 +20,14 @@
       </div>
       <div class="flex flex-col gap-4 col-span-5">
         <div>
-          <h3 class="text-2xl font-medium ">
-            <a href="#" class="hover:underline"> {{ user.first_name|add:" "|add:user.last_name }} , 21</a>
-          </h3>
-          <p class="mt-1 text-md text-gray-500 font-semibold">
+          <div class="flex justify-between">
+            <h3 class="text-2xl font-medium ">
+              <a href="#" class="hover:underline"> {{ user.first_name|add:" "|add:user.last_name }} , 21</a>
+            </h3>
+            <button class="bg-red-100/25 p-2 rounded-full">
+              <img width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/48/40C057/edit.png" alt="edit"/>            </button>
+                    </div>
+            <p class="mt-1 text-md text-gray-500 font-semibold">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam nulla amet voluptatum sit
             rerum, atque, quo culpa ut necessitatibus eius suscipit eum accusamus, aperiam voluptas
             exercitationem facere aliquid fuga. Sint. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
