@@ -73,6 +73,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
+DEBUG = False
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # Make sure to set your allowed hosts
+
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

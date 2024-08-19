@@ -19,6 +19,8 @@ from django.urls import path
 from project import views  
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import handler404
+from django.shortcuts import render
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,5 +38,11 @@ urlpatterns = [
     path('company', views.company,name='company' ),
     path('upload_profile_pic', views.upload_profile_pic,name='upload_profile_pic' ),
 ]
+
+def custom_404(request, exception):
+    return render(request, 'error.html', status=404)
+
+handler404 = custom_404
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

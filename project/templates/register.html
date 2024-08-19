@@ -68,6 +68,46 @@
                 </div>
                 {% endfor %}
                 {% endif %}
+                <!--
+  Heads up! 👋
+
+  Plugins:
+    - @tailwindcss/forms
+-->
+
+<div>
+    <div class="sm:hidden">
+      <label for="Tab" class="sr-only">Tab</label>
+  
+      <select id="Tab" class="w-full rounded-md border-gray-200">
+        <option>Settings</option>
+        <option>Messages</option>
+        <option>Archive</option>
+        <option select>Notifications</option>
+      </select>
+    </div>
+    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+    for="grid-first-name">
+    You are
+</label>
+    <div class="hidden sm:block">
+      <nav class="flex gap-6" aria-label="Tabs">
+        <a
+          href="#"
+          class="shrink-0 rounded-lg p-2 text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+        >
+          Company
+        </a>
+        <a
+          href="#"
+          class="shrink-0 rounded-lg bg-sky-100 p-2 text-sm font-medium text-sky-600"
+          aria-current="page"
+        >
+          Job Seeker
+        </a>
+      </nav>
+    </div>
+  </div>
                 <form onsubmit="sbt.disabled = true" method="post" class="mt-8 grid grid-cols-6 gap-6">
                     {% csrf_token %}
 
